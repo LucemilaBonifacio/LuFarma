@@ -1,18 +1,21 @@
-let medicamentos = [
-    { nome: "Aspirina", preco: 10.99 },
-    { nome: "Ibuprofeno", preco: 12.50 },
-    { nome: "Paracetamol", preco: 8.99 },
-    { nome: "Dorflex", preco: 15.99 },
-    { nome: "Neosaldina", preco: 20.99 }
-  ];
-  
-  let cosmeticos = [
-    { nome: "Shampoo", preco: 25.99 },
-    { nome: "Condicionador", preco: 30.99 },
-    { nome: "Creme de rosto", preco: 40.99 },
-    { nome: "Base de maquiagem", preco: 35.99 },
-    { nome: "Lápis de olho", preco: 10.99 }
-  ];
+let login = [
+    {nome: "Emanuelly", senha: 1234},
+    {nome: "Lucemila", senha: 1234},
+    {nome: "Lucas", senha: 1234},
+    {nome: "Maya", senha: 1234},
+    {nome:"Bruno", senha: 1234},
+    {nome:"Pedro", senha: 1234},
+    {nome:"Leonardo", senha: 1234},
+    {nome:"Luciano", senha: 1234},
+    {nome:"Sillas", senha: 1234},
+    {nome:"Mielle", senha: 1234}
+];
+console.log(login[0].nome);
+console.log(login[0].senha);
 
-console.log(medicamentos[0].nome); 
-console.log(medicamentos[0].preco); 
+
+    
+    
+    
+
+
