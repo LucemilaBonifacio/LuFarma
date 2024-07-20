@@ -10,8 +10,7 @@ let login = [
     {nome:"Sillas", senha: 1234},
     {nome:"Mielle", senha: 1234}
 ];
-console.log(login[0].nome);
-console.log(login[0].senha);
+module.exports = login;
 
 
     
