@@ -9,7 +9,7 @@ function espacamentoDuplo() {
     console.log();
 }
 
-function exibirItensDisponiveis(categoria) {
+function exibirItensDisponiveis(categoria) {  //exibe os itens por categoria, sendo medicamentos ou cosmeticos
     console.log("Itens disponíveis:");
     if (categoria === 'medicamentos') {
         listaMedicamentos.forEach((item, index) => {
@@ -22,7 +22,7 @@ function exibirItensDisponiveis(categoria) {
     }
 }
 
-function adicionarItem() {
+function adicionarItem() { //abre a lista para que o usuario escolha o produto no catalogo por numero
     let categoria = prompt("Escolha a categoria (medicamentos/cosmeticos): ");
     if (categoria === 'medicamentos' || categoria === 'cosmeticos') {
         exibirItensDisponiveis(categoria);
@@ -49,7 +49,7 @@ function adicionarItem() {
     }
 }
 
-function visualizarCarrinho() {
+function visualizarCarrinho() { //abre o carrinho para o usuario ver o nome e os preços
     if (carrinho.length === 0) {
         console.log("O carrinho está vazio.");
         espacamentoDuplo();
@@ -65,7 +65,7 @@ function visualizarCarrinho() {
     }
 }
 
-function menuPrincipal() {
+function menuPrincipal() { //menu principal com as opções ao usuário
     let opcao;
     do {
         console.log("Menu:");
