@@ -6,7 +6,7 @@ function espacamentoDuplo() {
 }
 
 function solicitarEndereco() {
-    let endereco = prompt("Insira o endereço de entrega: ");
+    let endereco = prompt("Insira o endereço de entrega: "); //solicita endereço ao usuario para mostrar no console na mensagem final
     return endereco;
 }
 
