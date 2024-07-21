@@ -13,7 +13,7 @@ function espacamentoDuplo() {
     console.log();
 }
 
-function solicitarDadosCartao() {
+function solicitarDadosCartao() { //solicita dados do cartão do usuário, validação é feita através da quantidade de números padrão de um cartão
     dadosCartao = prompt("Insira dados do cartão: ");
     codCartao = prompt("Insira código de segurança: ");
     espacamentoDuplo();
@@ -24,7 +24,7 @@ function solicitarDadosCartao() {
     }
 }
 
-console.log("Como deseja pagar?");
+console.log("Como deseja pagar?"); //menu de opções ao usuario
 espacamentoDuplo();
 console.log(" 1 -> Débito \n 2 -> Crédito \n 3 -> Pix \n 4 -> Pagar na entrega \n");
 espacamentoDuplo();
@@ -43,7 +43,7 @@ switch (opcao) {
         break;
     case 3:
         pix = true;
-        console.log("Gerando QR code");
+        console.log("Gerando QR code"); //gera um qr code no terminal onde ao usuario escanear, abre uma mensagem de pag aprovado
         let conteudoQR = "Pagamento aprovado";
         QRCode.generate(conteudoQR, { small: true });
         espacamentoDuplo();
