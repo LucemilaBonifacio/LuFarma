@@ -1,4 +1,4 @@
-let login = [
+let listaUsuarios = [
     {nome: "Emanuelly", senha: 1234},
     {nome: "Lucemila", senha: 1234},
     {nome: "Lucas", senha: 1234},
@@ -10,7 +10,7 @@ let login = [
     {nome:"Sillas", senha: 1234},
     {nome:"Mielle", senha: 1234}
 ];
-module.exports = login;
+module.exports = listaUsuarios;
 
 
     
