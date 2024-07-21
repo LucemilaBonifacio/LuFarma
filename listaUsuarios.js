@@ -7,7 +7,7 @@ let listaUsuarios = [
     {nome:"Pedro", senha: 1234},
     {nome:"Leonardo", senha: 1234},
     {nome:"Luciano", senha: 1234},
-    {nome:"Sillas", senha: 1234},
+    {nome:"Silas", senha: 1234},
     {nome:"Mielle", senha: 1234}
 ];
 module.exports = listaUsuarios;
