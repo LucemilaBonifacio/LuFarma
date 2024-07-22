@@ -1,15 +1,17 @@
 var prompt = require('prompt-sync')();
-const listaCosmeticos = require("./listaCosmeticos");
-const listaMedicamentos = require("./listaRemedios");
+const listaCosmeticos = require('./listaCosmeticos');
+const listaMedicamentos = require('./listaRemedios');
 
 let carrinho = [];
 
+//criar espaçamento no terminal
 function espacamentoDuplo() {
     console.log();
     console.log();
 }
 
-function exibirItensDisponiveis(categoria) {  //exibe os itens por categoria, sendo medicamentos ou cosmeticos
+//exibir itens disponíveis na categoria selecionada
+function exibirItensDisponiveis(categoria) {
     console.log("Itens disponíveis:");
     if (categoria === 'medicamentos') {
         listaMedicamentos.forEach((item, index) => {
@@ -22,24 +24,40 @@ function exibirItensDisponiveis(categoria) {  //exibe os itens por categoria, se
     }
 }
 
-function adicionarItem() { //abre a lista para que o usuario escolha o produto no catalogo por numero
+//adicionar itens ao carrinho
+function adicionarItem() {
     let categoria = prompt("Escolha a categoria (medicamentos/cosmeticos): ");
     if (categoria === 'medicamentos' || categoria === 'cosmeticos') {
         exibirItensDisponiveis(categoria);
         let escolha = Number(prompt("Escolha o número do item para adicionar ao carrinho: ")) - 1;
+
         if (categoria === 'medicamentos') {
             if (escolha >= 0 && escolha < listaMedicamentos.length) {
                 let item = listaMedicamentos[escolha];
-                carrinho.push(item);
-                console.log(`${item.nome} foi adicionado ao carrinho por R$ ${item.preco.toFixed(2)}`);
+                let quantidade = Number(prompt(`Quantas unidades de ${item.nome} deseja adicionar? `));
+                if (quantidade > 0) {
+                    for (let i = 0; i < quantidade; i++) {
+                        carrinho.push(item);
+                    }
+                    console.log(`${quantidade} unidades de ${item.nome} foram adicionadas ao carrinho por R$ ${item.preco.toFixed(2)} cada.`);
+                } else {
+                    console.log("Quantidade inválida. Tente novamente.");
+                }
             } else {
                 console.log("Opção inválida. Tente novamente.");
             }
         } else if (categoria === 'cosmeticos') {
             if (escolha >= 0 && escolha < listaCosmeticos.length) {
                 let item = listaCosmeticos[escolha];
-                carrinho.push(item);
-                console.log(`${item.nome} foi adicionado ao carrinho por R$ ${item.preco.toFixed(2)}`);
+                let quantidade = Number(prompt(`Quantas unidades de ${item.nome} deseja adicionar? `));
+                if (quantidade > 0) {
+                    for (let i = 0; i < quantidade; i++) {
+                        carrinho.push(item);
+                    }
+                    console.log(`${quantidade} unidades de ${item.nome} foram adicionadas ao carrinho por R$ ${item.preco.toFixed(2)} cada.`);
+                } else {
+                    console.log("Quantidade inválida. Tente novamente.");
+                }
             } else {
                 console.log("Opção inválida. Tente novamente.");
             }
@@ -49,13 +67,12 @@ function adicionarItem() { //abre a lista para que o usuario escolha o produto n
     }
 }
 
-function visualizarCarrinho() { //abre o carrinho para o usuario ver o nome e os preços
+//visualizar os itens no carrinho
+function visualizarCarrinho() {
     if (carrinho.length === 0) {
         console.log("O carrinho está vazio.");
-        espacamentoDuplo();
     } else {
         console.log("Itens no carrinho:");
-        espacamentoDuplo();
         let total = 0;
         carrinho.forEach((produto, index) => {
             console.log(`${index + 1}. ${produto.nome} - R$ ${produto.preco.toFixed(2)}`);
@@ -65,40 +82,34 @@ function visualizarCarrinho() { //abre o carrinho para o usuario ver o nome e os
     }
 }
 
-function menuPrincipal() { //menu principal com as opções ao usuário
+//exibe o menu principal e gerenciar a interação com o usuário
+function menuPrincipal() {
     let opcao;
     do {
-        console.log("Menu:");
         espacamentoDuplo();
+        console.log("Menu:");
         console.log("1 -> Adicionar item ao carrinho");
         console.log("2 -> Visualizar carrinho");
-        console.log("3 -> Prosseguir para pagamento");
+        console.log("3 -> Seguir para pagamento");
         espacamentoDuplo();
         opcao = Number(prompt("Escolha uma opção: "));
 
         switch (opcao) {
             case 1:
-                espacamentoDuplo();
                 adicionarItem();
-                espacamentoDuplo();
                 break;
             case 2:
-                espacamentoDuplo();
                 visualizarCarrinho();
-                espacamentoDuplo();
                 break;
             case 3:
-                espacamentoDuplo();
                 console.log("Prosseguindo para pagamento...");
-                espacamentoDuplo();
                 break;
             default:
-                espacamentoDuplo();
                 console.log("Opção inválida. Tente novamente.");
-                espacamentoDuplo();
         }
     } while (opcao !== 3);
 }
+
 
 menuPrincipal();
 
