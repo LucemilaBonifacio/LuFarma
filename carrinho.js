@@ -1,19 +1,16 @@
-var prompt = require('prompt-sync')();
+const prompt = require('prompt-sync')();
 const listaCosmeticos = require('./listaCosmeticos');
 const listaMedicamentos = require('./listaMedicamentos');
 
+function espacamentoDuplo() {
+    console.log();
+    console.log();
+}
 
 const carrinho = {
-    mostrarTela: function() {
-        let carrinho = [];
+    itens: [],
 
-        function espacamentoDuplo() {
-            console.log();
-            console.log();
-        }
-
-        //exibe itens disponíveis em cada categoria
-    function exibirItensDisponiveis(categoria) {
+    exibirItensDisponiveis: function(categoria) { //exibe os itens disponiveis elecando por numero para facilitar a escolha
         console.log("Itens disponíveis:");
         if (categoria === 'medicamentos') {
             listaMedicamentos.forEach((item, index) => {
@@ -24,42 +21,24 @@ const carrinho = {
                 console.log(`${index + 1}. ${item.nome} - R$ ${item.preco.toFixed(2)}`);
             });
         }
-    }
+    },
 
-    //adicionar itens ao carrinho
-    function adicionarItem() {
+    adicionarItem: function() {  //pergunta ao usuário qual lista de produtos ele deseja ver
         let categoria = prompt("Escolha a categoria (medicamentos/cosmeticos): ");
         if (categoria === 'medicamentos' || categoria === 'cosmeticos') {
-            exibirItensDisponiveis(categoria);
+            this.exibirItensDisponiveis(categoria);
             espacamentoDuplo();
             let escolha = Number(prompt("Escolha o número do item para adicionar ao carrinho: ")) - 1;
             espacamentoDuplo();
 
-            if (categoria === 'medicamentos') {
+            if (categoria === 'medicamentos') { //pergunta a quantidade do mesmo item o usuário quer colocar no carrinho
                 if (escolha >= 0 && escolha < listaMedicamentos.length) {
                     let item = listaMedicamentos[escolha];
-                    espacamentoDuplo();
                     let quantidade = Number(prompt(`Quantas unidades de ${item.nome} deseja adicionar? `));
                     espacamentoDuplo();
                     if (quantidade > 0) {
                         for (let i = 0; i < quantidade; i++) {
-                            carrinho.push(item);
-                        }
-                        espacamentoDuplo();
-                        console.log(`${quantidade} unidades de ${item.nome} foram adicionadas ao carrinho por R$ ${item.preco.toFixed(2)} cada.`);
-                    } else {
-                        console.log("Quantidade inválida. Tente novamente.");
-                    }
-                } else {
-                    console.log("Opção inválida. Tente novamente.");
-                }
-            } else if (categoria === 'cosmeticos') {
-                if (escolha >= 0 && escolha < listaCosmeticos.length) {
-                    let item = listaCosmeticos[escolha];
-                    let quantidade = Number(prompt(`Quantas unidades de ${item.nome} deseja adicionar? `));
-                    if (quantidade > 0) {
-                        for (let i = 0; i < quantidade; i++) {
-                            carrinho.push(item);
+                            this.itens.push(item);
                         }
                         console.log(`${quantidade} unidades de ${item.nome} foram adicionadas ao carrinho por R$ ${item.preco.toFixed(2)} cada.`);
                     } else {
@@ -68,29 +47,40 @@ const carrinho = {
                 } else {
                     console.log("Opção inválida. Tente novamente.");
                 }
+            } else if (escolha >= 0 && escolha < listaCosmeticos.length) {
+                let item = listaCosmeticos[escolha];
+                let quantidade = Number(prompt(`Quantas unidades de ${item.nome} deseja adicionar? `));
+                if (quantidade > 0) { 
+                    for (let i = 0; i < quantidade; i++) {
+                        this.itens.push(item);
+                    }
+                    console.log(`${quantidade} unidades de ${item.nome} foram adicionadas ao carrinho por R$ ${item.preco.toFixed(2)} cada.`);
+                } else {
+                    console.log("Quantidade inválida. Tente novamente.");
+                }
+            } else {
+                console.log("Opção inválida. Tente novamente.");
             }
         } else {
             console.log("Categoria inválida. Tente novamente.");
         }
-    }
+    },
 
-    //visualizar os itens no carrinho
-    function visualizarCarrinho() {
-        if (carrinho.length === 0) {
+    visualizarCarrinho: function() { //mostra o carrinho para o usuário, juntamente do preço de cada item e do total
+        if (this.itens.length === 0) {
             console.log("O carrinho está vazio.");
         } else {
             console.log("Itens no carrinho:");
             let total = 0;
-            carrinho.forEach((produto, index) => {
+            this.itens.forEach((produto, index) => {
                 console.log(`${index + 1}. ${produto.nome} - R$ ${produto.preco.toFixed(2)}`);
                 total += produto.preco;
             });
             console.log(`Total: R$ ${total.toFixed(2)}`);
         }
-    }
+    },
 
-    //exibe o menu principal e gerenciar a interação com o usuário
-    function menuPrincipal() {
+    mostrarTela: function() { //função para mostrar o menu principal do carrinho, funciona como um loop
         let opcao;
         do {
             espacamentoDuplo();
@@ -103,10 +93,10 @@ const carrinho = {
 
             switch (opcao) {
                 case 1:
-                    adicionarItem();
+                    this.adicionarItem();
                     break;
                 case 2:
-                    visualizarCarrinho();
+                    this.visualizarCarrinho();
                     break;
                 case 3:
                     console.log("Prosseguindo para pagamento...");
@@ -116,7 +106,6 @@ const carrinho = {
             }
         } while (opcao !== 3);
     }
-}
-}
+};
 
 module.exports = carrinho;
