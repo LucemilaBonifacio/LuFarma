@@ -29,16 +29,21 @@ function adicionarItem() {
     let categoria = prompt("Escolha a categoria (medicamentos/cosmeticos): ");
     if (categoria === 'medicamentos' || categoria === 'cosmeticos') {
         exibirItensDisponiveis(categoria);
+        espacamentoDuplo();
         let escolha = Number(prompt("Escolha o número do item para adicionar ao carrinho: ")) - 1;
+        espacamentoDuplo();
 
         if (categoria === 'medicamentos') {
             if (escolha >= 0 && escolha < listaMedicamentos.length) {
                 let item = listaMedicamentos[escolha];
+                espacamentoDuplo();
                 let quantidade = Number(prompt(`Quantas unidades de ${item.nome} deseja adicionar? `));
+                espacamentoDuplo();
                 if (quantidade > 0) {
                     for (let i = 0; i < quantidade; i++) {
                         carrinho.push(item);
                     }
+                    espacamentoDuplo();
                     console.log(`${quantidade} unidades de ${item.nome} foram adicionadas ao carrinho por R$ ${item.preco.toFixed(2)} cada.`);
                 } else {
                     console.log("Quantidade inválida. Tente novamente.");
