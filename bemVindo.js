@@ -1,14 +1,15 @@
 const prompt = require("prompt-sync")();
+const chalk = require("chalk");
 
-const divisoria = function() {
+function divisoria() {
   console.log("\n==================================================================\n");
 }
 
   const bemVindo = {
     mostrarTela: function () {
       divisoria();
-      console.log ("Seja bem vindo à LuFarma");
-                                                                        
+      const msg = chalk.bold.green("Seja bem vindo à LuFarma")
+      console.log (msg);
       divisoria();
     },
   };
