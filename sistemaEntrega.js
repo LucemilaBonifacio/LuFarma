@@ -1,4 +1,4 @@
-var prompt = require('prompt-sync')();
+const prompt = require('prompt-sync')();
 
 function espacamentoDuplo() {
     console.log();
@@ -10,36 +10,39 @@ function solicitarEndereco() {
     return endereco;
 }
 
-function finalizarCompra() {
-    console.log("Procedimento de entrega iniciado.");
-    espacamentoDuplo();
-    
-    let endereco = solicitarEndereco();
-    espacamentoDuplo();
-    
-    console.log(`O frete custará R$ 10,00.`);
-    espacamentoDuplo();
+const finalizarCompra = {
+    mostrarTela: function() {
+        console.log("Procedimento de entrega iniciado.");
+        espacamentoDuplo();
+        
+        let endereco = solicitarEndereco();
+        espacamentoDuplo();
+        
+        console.log(`O frete custará R$ 10,00.`);
+        espacamentoDuplo();
 
-    // Solicita confirmação do envio
-    let confirmacao = Number(prompt("Deseja confirmar o envio? \n\n 1 -> Sim \n 2 -> Não \n\n"));
+        // Solicita confirmação do envio
+        let confirmacao;
+        do {
+            confirmacao = Number(prompt("Deseja confirmar o envio? \n\n 1 -> Sim \n 2 -> Não \n\n"));
+            espacamentoDuplo();
 
-    if (confirmacao === 1) {
-        console.log(`Seu pedido foi enviado para o seguinte endereço: ${endereco}`);
-        espacamentoDuplo();
-        console.log("Agradecemos a sua compra e esperamos vê-lo novamente em breve.");
-        espacamentoDuplo();
-    } else if (confirmacao === 2) {
-        console.log("Produto ficará disponível para retirada em ponto de coleta.");
-        espacamentoDuplo();
-        console.log("Agradecemos a sua compra e esperamos vê-lo novamente em breve.");
-        espacamentoDuplo();
-    } else {
-        console.log("Opção inválida. Tente novamente.");
-        espacamentoDuplo();
-        finalizarCompra(); // Chama a função novamente se a opção for inválida
+            if (confirmacao === 1) {
+                console.log(`Seu pedido foi enviado para o seguinte endereço: ${endereco}`);
+                espacamentoDuplo();
+                console.log("Agradecemos a sua compra e esperamos vê-lo novamente em breve.");
+                espacamentoDuplo();
+            } else if (confirmacao === 2) { //caso o usuario não queira pagar frete, exibe opção de retirar
+                console.log("Produto ficará disponível para retirada em ponto de coleta.");
+                espacamentoDuplo();
+                console.log("Agradecemos a sua compra e esperamos vê-lo novamente em breve.");
+                espacamentoDuplo();
+            } else {
+                console.log("Opção inválida. Tente novamente.");
+                espacamentoDuplo();
+            }
+        } while (confirmacao !== 1 && confirmacao !== 2);
     }
-}
-
-finalizarCompra();
+};
 
 module.exports = finalizarCompra;
