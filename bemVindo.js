@@ -1,11 +1,18 @@
-var prompt = require('prompt-sync')();
+const prompt = require("prompt-sync")();
 
+const divisoria = function() {
+  console.log("\n==================================================================\n");
+}
 
-
-function bemVindo () {
-      
-      console.log(`Seja bem vindo à LuFarma`);
-      
-   };
+  const bemVindo = {
+    mostrarTela: function () {
+      divisoria();
+      console.log ("Seja bem vindo à LuFarma");
+                                                                        
+      divisoria();
+    },
+  };
   
+bemVindo.mostrarTela();
+
  module.exports = bemVindo;
