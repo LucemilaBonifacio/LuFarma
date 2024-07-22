@@ -4,13 +4,13 @@ const listaMedicamentos = require('./listaRemedios');
 
 let carrinho = [];
 
-//criar espaçamento no terminal
+
 function espacamentoDuplo() {
     console.log();
     console.log();
 }
 
-//exibir itens disponíveis na categoria selecionada
+//exibe itens disponíveis em cada categoria
 function exibirItensDisponiveis(categoria) {
     console.log("Itens disponíveis:");
     if (categoria === 'medicamentos') {
