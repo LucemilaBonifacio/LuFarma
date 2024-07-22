@@ -3,15 +3,14 @@ const listaCosmeticos = require('./listaCosmeticos');
 const listaMedicamentos = require('./listaMedicamentos');
 
 
-function espacamentoDuplo() {
-    console.log();
-    console.log();
-}
-
 const carrinho = {
     mostrarTela: function() {
         let carrinho = [];
 
+        function espacamentoDuplo() {
+            console.log();
+            console.log();
+        }
 
         //exibe itens disponíveis em cada categoria
     function exibirItensDisponiveis(categoria) {

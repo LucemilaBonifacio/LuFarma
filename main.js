@@ -5,4 +5,4 @@ const login = require("./login");
 
 carrinho.mostrarTela();
 
-login.mostrarTela();
+login.mostrarTela(); //funcionando
