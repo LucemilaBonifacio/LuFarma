@@ -10,6 +10,7 @@ let listaUsuarios = [
     {login:"Silas", senha: 1234},
     {login:"Mielle", senha: 1234}
 ];
+
 module.exports = listaUsuarios;
 
 

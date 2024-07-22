@@ -36,6 +36,6 @@ const login = {
     }
   },
 };
-login.mostrarTela();
+
 // Exportação
 module.exports = login;
