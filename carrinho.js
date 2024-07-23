@@ -1,4 +1,6 @@
 const prompt = require('prompt-sync')();
+
+// Supondo que as listas de itens já foram importadas e a função `espacoDuplo` já está definida
 const listaCosmeticos = require('./listaCosmeticos');
 const listaMedicamentos = require('./listaMedicamentos');
 
@@ -8,22 +10,42 @@ function espacamentoDuplo() {
 }
 
 const carrinho = {
-    itens: [],
+    itens: [], // Armazena os itens no carrinho
 
-    exibirItensDisponiveis: function(categoria) { //exibe os itens disponiveis elecando por numero para facilitar a escolha
-        console.log("Itens disponíveis:");
-        if (categoria === 'medicamentos') {
-            listaMedicamentos.forEach((item, index) => {
-                console.log(`${index + 1}. ${item.nome} - R$ ${item.preco.toFixed(2)}`);
-            });
-        } else if (categoria === 'cosmeticos') {
-            listaCosmeticos.forEach((item, index) => {
-                console.log(`${index + 1}. ${item.nome} - R$ ${item.preco.toFixed(2)}`);
-            });
-        }
+    mostrarTela: function () {
+        let opcao;
+        
+        do {
+            console.log("Menu do Carrinho");
+            espacamentoDuplo();
+            console.log("1 -> Adicionar item ao carrinho");
+            console.log("2 -> Visualizar carrinho");
+            console.log("3 -> Remover item do carrinho");
+            console.log("4 -> Seguir para pagamento");
+            espacamentoDuplo();
+            opcao = Number(prompt("Escolha uma opção: "));
+
+            switch (opcao) {
+                case 1:
+                    this.adicionarItem();
+                    break;
+                case 2:
+                    this.visualizarCarrinho();
+                    break;
+                case 3:
+                    this.removerItem();
+                    break;
+                case 4:
+                    console.log("Prosseguindo para pagamento...");
+                    // Aqui você pode adicionar lógica para prosseguir ao pagamento
+                    break;
+                default:
+                    console.log("Opção inválida. Tente novamente.");
+            }
+        } while (opcao !== 4); // Continua o loop até que o usuário escolha a opção 4
     },
 
-    adicionarItem: function() {  //pergunta ao usuário qual lista de produtos ele deseja ver
+    adicionarItem: function() {
         let categoria = prompt("Escolha a categoria (medicamentos/cosmeticos): ");
         if (categoria === 'medicamentos' || categoria === 'cosmeticos') {
             this.exibirItensDisponiveis(categoria);
@@ -31,9 +53,10 @@ const carrinho = {
             let escolha = Number(prompt("Escolha o número do item para adicionar ao carrinho: ")) - 1;
             espacamentoDuplo();
 
-            if (categoria === 'medicamentos') { //pergunta a quantidade do mesmo item o usuário quer colocar no carrinho
+            if (categoria === 'medicamentos') {
                 if (escolha >= 0 && escolha < listaMedicamentos.length) {
                     let item = listaMedicamentos[escolha];
+                    espacamentoDuplo();
                     let quantidade = Number(prompt(`Quantas unidades de ${item.nome} deseja adicionar? `));
                     espacamentoDuplo();
                     if (quantidade > 0) {
@@ -47,26 +70,41 @@ const carrinho = {
                 } else {
                     console.log("Opção inválida. Tente novamente.");
                 }
-            } else if (escolha >= 0 && escolha < listaCosmeticos.length) {
-                let item = listaCosmeticos[escolha];
-                let quantidade = Number(prompt(`Quantas unidades de ${item.nome} deseja adicionar? `));
-                if (quantidade > 0) { 
-                    for (let i = 0; i < quantidade; i++) {
-                        this.itens.push(item);
+            } else if (categoria === 'cosmeticos') {
+                if (escolha >= 0 && escolha < listaCosmeticos.length) {
+                    let item = listaCosmeticos[escolha];
+                    let quantidade = Number(prompt(`Quantas unidades de ${item.nome} deseja adicionar? `));
+                    if (quantidade > 0) {
+                        for (let i = 0; i < quantidade; i++) {
+                            this.itens.push(item);
+                        }
+                        console.log(`${quantidade} unidades de ${item.nome} foram adicionadas ao carrinho por R$ ${item.preco.toFixed(2)} cada.`);
+                    } else {
+                        console.log("Quantidade inválida. Tente novamente.");
                     }
-                    console.log(`${quantidade} unidades de ${item.nome} foram adicionadas ao carrinho por R$ ${item.preco.toFixed(2)} cada.`);
                 } else {
-                    console.log("Quantidade inválida. Tente novamente.");
+                    console.log("Opção inválida. Tente novamente.");
                 }
-            } else {
-                console.log("Opção inválida. Tente novamente.");
             }
         } else {
             console.log("Categoria inválida. Tente novamente.");
         }
     },
 
-    visualizarCarrinho: function() { //mostra o carrinho para o usuário, juntamente do preço de cada item e do total
+    exibirItensDisponiveis: function(categoria) {
+        console.log("Itens disponíveis:");
+        if (categoria === 'medicamentos') {
+            listaMedicamentos.forEach((item, index) => {
+                console.log(`${index + 1}. ${item.nome} - R$ ${item.preco.toFixed(2)}`);
+            });
+        } else if (categoria === 'cosmeticos') {
+            listaCosmeticos.forEach((item, index) => {
+                console.log(`${index + 1}. ${item.nome} - R$ ${item.preco.toFixed(2)}`);
+            });
+        }
+    },
+
+    visualizarCarrinho: function() {
         if (this.itens.length === 0) {
             console.log("O carrinho está vazio.");
         } else {
@@ -80,31 +118,19 @@ const carrinho = {
         }
     },
 
-    mostrarTela: function() { //função para mostrar o menu principal do carrinho, funciona como um loop
-        let opcao;
-        do {
-            espacamentoDuplo();
-            console.log("Menu:");
-            console.log("1 -> Adicionar item ao carrinho");
-            console.log("2 -> Visualizar carrinho");
-            console.log("3 -> Seguir para pagamento");
-            espacamentoDuplo();
-            opcao = Number(prompt("Escolha uma opção: "));
+    removerItem: function() {
+        this.visualizarCarrinho(); // Exibe os itens no carrinho para o usuário escolher o que remover
+        espacamentoDuplo();
+        let indice = Number(prompt("Escolha o número do item para remover do carrinho: ")) - 1;
+        espacamentoDuplo();
 
-            switch (opcao) {
-                case 1:
-                    this.adicionarItem();
-                    break;
-                case 2:
-                    this.visualizarCarrinho();
-                    break;
-                case 3:
-                    console.log("Prosseguindo para pagamento...");
-                    break;
-                default:
-                    console.log("Opção inválida. Tente novamente.");
-            }
-        } while (opcao !== 3);
+        if (indice >= 0 && indice < this.itens.length) {
+            let itemRemovido = this.itens.splice(indice, 1)[0]; // Remove o item do carrinho
+            console.log(`O item ${itemRemovido.nome} foi removido do carrinho.`);
+        } else {
+            console.log("Número inválido. Tente novamente.");
+        }
+        espacamentoDuplo();
     }
 };
 
