@@ -4,4 +4,5 @@ Conforme foi solicitado com código para impressão apenas no console.
 
 1. Link do Fluxograma de operação: https://miro.com/app/board/uXjVK0JmJlc=/
 2. Link da apresentação de marketing: https://gamma.app/docs/LuFarma-Sua-Farmacia--gxspss2z6zwnh51
+3. Link do kanbam no trello: https://trello.com/b/Zcz1x781/lufarma
    
