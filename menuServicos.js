@@ -27,10 +27,10 @@ const menuServicos = {
 
             switch (opcao) {
                 case 1:
-                   mostrarServicosFarmacia();
+                    this.mostrarServicosFarmacia(); // Correção para chamar a função correta
                     break;
                 case 2:
-                    mostrarListaParceiros();
+                    this.mostrarListaParceiros(); // Correção para chamar a função correta
                     break;
                 case 3:
                     console.log("Volte logo!");
@@ -40,20 +40,20 @@ const menuServicos = {
                     console.log("Opção inválida. Tente novamente.");
                     espacamentoDuplo();
             }
-        } while (opcao !== 3);
+        } while (opcao !== 3); // Reexibe o menu até que a opção 3 seja escolhida
     },
 
     mostrarServicosFarmacia: function() {
-            divisoria();
-            console.log("Serviços da farmácia");
-            espacamentoDuplo();
-            console.log("1 -> Testagem");
-            console.log("2 -> Aferição de pressão");
-            console.log("3 -> Sair");
-            espacamentoDuplo();
-            let servicoOpcao = Number(prompt("Escolha uma opção: "));
-            espacamentoDuplo();
-    
+        divisoria();
+        console.log("Serviços da farmácia");
+        espacamentoDuplo();
+        console.log("1 -> Testagem");
+        console.log("2 -> Aferição de pressão");
+        console.log("3 -> Sair");
+        espacamentoDuplo();
+        let servicoOpcao = Number(prompt("Escolha uma opção: "));
+        espacamentoDuplo();
+
         if (servicoOpcao == 1 || servicoOpcao == 2) {
             console.log("Encaminhando usuário ao farmacêutico de plantão.");
         } else {
@@ -64,15 +64,15 @@ const menuServicos = {
 
     mostrarListaParceiros: function() {
         divisoria();
-            console.log("Lista de parceiros:");
-            espacamentoDuplo();
-            console.log("1 -> MedPrev");
-            console.log("2 -> Vaccine");
-            console.log("3 -> Cerpe");
-            console.log("4 -> Sair");
-            espacamentoDuplo();
-            let parceiroOpcao = Number(prompt("Escolha uma opção: "));
-            espacamentoDuplo();
+        console.log("Lista de parceiros:");
+        espacamentoDuplo();
+        console.log("1 -> MedPrev");
+        console.log("2 -> Vaccine");
+        console.log("3 -> Cerpe");
+        console.log("4 -> Sair");
+        espacamentoDuplo();
+        let parceiroOpcao = Number(prompt("Escolha uma opção: "));
+        espacamentoDuplo();
         if (parceiroOpcao >= 1 && parceiroOpcao <= 3) {
             console.log("Encaminhando usuário ao Serviço escolhido.");
         } else {
