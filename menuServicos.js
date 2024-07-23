@@ -82,6 +82,4 @@ const menuServicos = {
     }
 };
 
-menuServicos.mostrarTela();
-
 module.exports = menuServicos;

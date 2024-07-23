@@ -14,6 +14,4 @@ function divisoria() {
     },
   };
   
-bemVindo.mostrarTela();
-
  module.exports = bemVindo;
