@@ -22,6 +22,8 @@ while (continuar) { // Loop para exibir o menu até que o usuário escolha sair
     switch (opcaoMenu) {
         case 1:
         carrinho.mostrarTela(); // Chama a função mostrarTela do módulo carrinho
+        sistemacompras.mostrarTela();
+        sistemaentrega.mostrarTela();
         break;
         case 2:
         menuservicos.mostrarTela(); // Chama a função mostrarTela do módulo menuServicos
