@@ -6,6 +6,7 @@ const carrinho = require("./carrinho");
 const login = require("./login");
 const sistemacompras = require("./sistemaCompras");
 const sistemaentrega = require("./sistemaEntrega");
+const chalk = require("chalk");
 
 boasvindas.mostrarTela();
 
@@ -29,11 +30,11 @@ while (continuar) { // Loop para exibir o menu até que o usuário escolha sair
         menuservicos.mostrarTela(); // Chama a função mostrarTela do módulo menuServicos
         break;
         case 3:
-        console.log("Obrigado pela Preferencia! Volte Sempre! ");
+        console.log(chalk.bold.green("Obrigado pela Preferencia! Volte Sempre! "));
         continuar = false; // Sai do loop
         break;
         default:
-        console.log("Opção inválida. Tente novamente.");
+        console.log(chalk.bold.red("Opção inválida. Tente novamente."));
     }
 }
 

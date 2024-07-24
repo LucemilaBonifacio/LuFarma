@@ -1,5 +1,11 @@
 var prompt = require('prompt-sync')();
 var QRCode = require('qrcode-terminal');
+const chalk = require("chalk");
+
+
+function divisoria() {
+    console.log(chalk.red("\n==================================================================\n"));
+}
 
 const sistemaCompras = {
     mostrarTela: function() {
@@ -18,20 +24,24 @@ const sistemaCompras = {
         function solicitarDadosCartao() {
             dadosCartao = prompt("Insira dados do cartão: ");
             codCartao = prompt("Insira código de segurança: ");
+            divisoria();
             espacamentoDuplo();
             if (dadosCartao.length === 16) {
-                console.log("Pagamento aprovado \nProsseguindo para entrega.");
+                console.log(chalk.bold.green("Pagamento aprovado \nProsseguindo para entrega."));
             } else {
-                console.log("Dados inválidos, tente novamente.");
+                console.log(chalk.bold.red("Dados inválidos, tente novamente."));
             }
         }
 
-        console.log("Como deseja pagar?");
+        console.log(chalk.yellow("Como deseja pagar?"));
+        divisoria();
         espacamentoDuplo();
-        console.log(" 1 -> Débito \n 2 -> Crédito \n 3 -> Pix \n 4 -> Pagar na entrega \n");
+        console.log(chalk.yellow(" 1 -> Débito \n 2 -> Crédito \n 3 -> Pix \n 4 -> Pagar na entrega \n"));
+        divisoria();
         espacamentoDuplo();
 
         let opcao = Number(prompt("Insira a opção desejada: "));
+        divisoria();
         espacamentoDuplo();
 
         switch (opcao) {
@@ -45,19 +55,19 @@ const sistemaCompras = {
                 break;
             case 3:
                 pix = true;
-                console.log("Gerando QR code");
+                console.log(chalk.bold.green("Gerando QR code"));
                 let conteudoQR = "Pagamento aprovado";
                 QRCode.generate(conteudoQR, { small: true });
                 espacamentoDuplo();
-                console.log("\nProsseguindo para entrega.");
+                console.log(chalk.bold.green("\nProsseguindo para entrega."));
                 espacamentoDuplo();
                 break;
             case 4:
                 pagarNaEntrega = true;
-                console.log("Prosseguindo para entrega.");
+                console.log(chalk.bold.green("Prosseguindo para entrega."));
                 break;
             default:
-                console.log("Opção inválida. Tente novamente.");
+                console.log(chalk.bold.red("Opção inválida. Tente novamente."));
         }
     }
 };
