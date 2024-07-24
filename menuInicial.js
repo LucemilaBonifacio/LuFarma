@@ -17,7 +17,7 @@ function espacamentoDuplo() {
 const menuInicial = {
   mostrarTela: function () {
 
-      divisoria();
+
       console.log(chalk.yellow("  Menu Inicial  "));
       espacamentoDuplo();
       console.log(" O que você deseja? ");
