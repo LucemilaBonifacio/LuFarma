@@ -8,7 +8,14 @@ function divisoria() {
   const bemVindo = {
     mostrarTela: function () {
       divisoria();
-      const msg = chalk.bold.green("Seja bem vindo à LuFarma")
+      const msg = chalk.bold.green(`Seja bem vindo à 
+██╗     ██╗   ██╗███████╗ █████╗ ██████╗ ███╗   ███╗ █████╗ 
+██║     ██║   ██║██╔════╝██╔══██╗██╔══██╗████╗ ████║██╔══██╗
+██║     ██║   ██║█████╗  ███████║██████╔╝██╔████╔██║███████║
+██║     ██║   ██║██╔══╝  ██╔══██║██╔══██╗██║╚██╔╝██║██╔══██║
+███████╗╚██████╔╝██║     ██║  ██║██║  ██║██║ ╚═╝ ██║██║  ██║
+╚══════╝ ╚═════╝ ╚═╝     ╚═╝  ╚═╝╚═╝  ╚═╝╚═╝     ╚═╝╚═╝  ╚═╝
+                                                            `)
       console.log (msg);
       divisoria();
     },
