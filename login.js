@@ -1,10 +1,11 @@
 const prompt = require("prompt-sync")();
+const chalk = require("chalk");
 //Fazer a requisição da lista de usuarios
 const listaUsuarios = require("./listaUsuarios");
 
 
  function divisoria() {
-  console.log("\n==================================================================\n");
+  console.log(chalk.bold.red("\n==================================================================\n"));
 };
 
 const login = {
@@ -23,14 +24,14 @@ const login = {
           this.contaLogada = usuario;
           this.loginOk = true;
 
-          console.log(`Bem vindo, ${this.contaLogada.login}!`);
+          console.log(chalk.bold.green("Login realizado com sucesso"));
           divisoria();
           break;
         }
       }
 
       if (this.loginOk == false) {
-        console.log("Login ou senha incorretos. Tente novamente.");
+        console.log(chalk.bold.red("Login ou senha incorretos. Tente novamente."));
         divisoria();
       }
     }
