@@ -16,34 +16,35 @@ const finalizarCompra = {
         console.log(chalk.bold.green("Procedimento de entrega iniciado."));
         espacamentoDuplo();
         
-        let endereco = solicitarEndereco();
-        espacamentoDuplo();
-        
-        console.log(chalk.bold.green(`O frete custará R$ 10,00.`));
-        espacamentoDuplo();
-
-        // Solicita confirmação do envio
-        let confirmacao;
         do {
-            confirmacao = Number(prompt("Deseja confirmar o envio? \n\n 1 -> Sim \n 2 -> Não \n\n"));
+            console.log(chalk.bold.yellow("1 -> Deseja retirar em algum ponto de coleta?"));
+            console.log(chalk.bold.yellow("2 -> Deseja enviar para entrega?"));
+            espacamentoDuplo();
+            confirmacao = Number(prompt("Escolha uma opção:"));
             espacamentoDuplo();
 
             if (confirmacao === 1) {
-                console.log(`Seu pedido foi enviado para o seguinte endereço: ${endereco}`);
-                espacamentoDuplo();
-                console.log(chalk.bold.green("Agradecemos a sua compra e esperamos vê-lo novamente em breve."));
-                espacamentoDuplo();
-            } else if (confirmacao === 2) { //caso o usuario não queira pagar frete, exibe opção de retirar
                 console.log("Produto ficará disponível para retirada em ponto de coleta.");
                 espacamentoDuplo();
                 console.log(chalk.bold.green("Agradecemos a sua compra e esperamos vê-lo novamente em breve."));
                 espacamentoDuplo();
+                break; // Encerra o loop após exibir a mensagem de retirada
+            } else if (confirmacao === 2) {
+                let endereco = solicitarEndereco();
+                espacamentoDuplo();
+                console.log(chalk.bold.green(`O frete custará R$ 10,00.`));
+                espacamentoDuplo();
+                console.log(`Seu pedido foi enviado para o seguinte endereço: ${endereco}`);
+                espacamentoDuplo();
+                console.log(chalk.bold.green("Agradecemos a sua compra e esperamos vê-lo novamente em breve."));
+                espacamentoDuplo();
+                break; // Encerra o loop após exibir a mensagem de envio
             } else {
                 console.log(chalk.bold.red("Opção inválida. Tente novamente."));
                 espacamentoDuplo();
             }
-        } while (confirmacao !== 1 && confirmacao !== 2);
+        } while (true); 
     }
 };
 
-module.exports = finalizarCompra;
+module.exports = finalizarCompra; 
