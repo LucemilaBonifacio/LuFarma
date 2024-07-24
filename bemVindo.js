@@ -2,7 +2,7 @@ const prompt = require("prompt-sync")();
 const chalk = require("chalk");
 
 function divisoria() {
-  console.log("\n==================================================================\n");
+  console.log(chalk.red("\n==================================================================\n"));
 }
 
   const bemVindo = {
