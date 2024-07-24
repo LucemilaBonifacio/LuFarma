@@ -32,5 +32,5 @@ const menuInicial = {
   }
 
 
-// Exportação.
+// Exportação
 module.exports = menuInicial;
