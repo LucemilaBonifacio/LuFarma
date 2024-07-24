@@ -1,12 +1,14 @@
 const prompt = require('prompt-sync')();
-
-// Supondo que as listas de itens já foram importadas e a função `espacoDuplo` já está definida
 const listaCosmeticos = require('./listaCosmeticos');
-const listaMedicamentos = require('./listaMedicamentos');
-
+const listaMedicamentos = require('./listaMedicamentos'); //listas de medicamentos e cosmeticos importadas
+const chalk = require("chalk");
 function espacamentoDuplo() {
     console.log();
     console.log();
+}
+
+function divisoria() {
+    console.log("\n==================================================================\n");
 }
 
 const carrinho = {
@@ -16,12 +18,13 @@ const carrinho = {
         let opcao;
         
         do {
-            console.log("Menu do Carrinho");
-            espacamentoDuplo();
-            console.log("1 -> Adicionar item ao carrinho");
-            console.log("2 -> Visualizar carrinho");
-            console.log("3 -> Remover item do carrinho");
-            console.log("4 -> Seguir para pagamento");
+            console.log(chalk.yellow("Menu de compras"));
+            divisoria();
+            console.log(chalk.yellow("1 -> Adicionar item ao carrinho"));
+            console.log(chalk.yellow("2 -> Visualizar carrinho"));
+            console.log(chalk.yellow("3 -> Remover item do carrinho"));
+            console.log(chalk.yellow("4 -> Seguir para pagamento"));
+            console.log(chalk.yellow("5 -> Sair")); 
             espacamentoDuplo();
             opcao = Number(prompt("Escolha uma opção: "));
 
@@ -36,9 +39,15 @@ const carrinho = {
                     this.removerItem();
                     break;
                 case 4:
-                    console.log("Prosseguindo para pagamento...");
-                    // Aqui você pode adicionar lógica para prosseguir ao pagamento
+                    espacamentoDuplo();
+                    console.log(chalk.bold.green("Prosseguindo para pagamento..."));
+                    espacamentoDuplo();
+                    // segue para o pagamento
                     break;
+                case 5: // Caso de sair do menu do carrinho
+                    console.log(chalk.bold.red("Saindo..."));
+                    espacamentoDuplo();
+                    process.exit(0);
                 default:
                     console.log("Opção inválida. Tente novamente.");
             }
@@ -47,6 +56,7 @@ const carrinho = {
 
     adicionarItem: function() {
         let categoria = prompt("Escolha a categoria (medicamentos/cosmeticos): ");
+        espacamentoDuplo();
         if (categoria === 'medicamentos' || categoria === 'cosmeticos') {
             this.exibirItensDisponiveis(categoria);
             espacamentoDuplo();
@@ -63,8 +73,10 @@ const carrinho = {
                         for (let i = 0; i < quantidade; i++) {
                             this.itens.push(item);
                         }
+                        espacamentoDuplo();
                         console.log(`${quantidade} unidades de ${item.nome} foram adicionadas ao carrinho por R$ ${item.preco.toFixed(2)} cada.`);
                     } else {
+                        espacamentoDuplo();
                         console.log("Quantidade inválida. Tente novamente.");
                     }
                 } else {
