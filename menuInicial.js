@@ -1,9 +1,11 @@
+const chalk = require("chalk");
+
 // Importações
 const prompt = require("prompt-sync")();
 
 
 const divisoria = function() {
-  console.log('\n==================================================================\n');
+  console.log(chalk.red('\n==================================================================\n'));
 }
 
 function espacamentoDuplo() {
@@ -15,14 +17,14 @@ function espacamentoDuplo() {
 const menuInicial = {
   mostrarTela: function () {
 
-      divisoria();
-      console.log("  Menu Inicial  ");
+
+      console.log(chalk.yellow("  Menu Inicial  "));
       espacamentoDuplo();
-      console.log(" O que você deseja? ")
+      console.log(" O que você deseja? ");
       espacamentoDuplo();
-      console.log("1 -> Produtos");
-      console.log("2 -> Serviços");
-      console.log("3 -> Sair");
+      console.log(chalk.yellow("1 -> Produtos"));
+      console.log(chalk.yellow("2 -> Serviços"));
+      console.log(chalk.yellow("3 -> Sair"));
       
 
       divisoria(); // Exibe a divisória após cada interação
