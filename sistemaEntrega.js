@@ -10,6 +10,9 @@ function solicitarEndereco() {
     let endereco = prompt("Insira o endereço de entrega: "); // Solicita o endereço ao usuário
     return endereco;
 }
+function divisoria(){ 
+    console.log(chalk.red("\n==================================================================\n"));
+}
 
 const finalizarCompra = {
     mostrarTela: function() {
