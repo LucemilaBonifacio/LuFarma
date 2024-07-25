@@ -10,8 +10,6 @@ const chalk = require("chalk");
 
 boasvindas.mostrarTela();
 
-login.mostrarTela(); 
-
 
 let continuar = true; // Flag para controlar o loop do menu
 
@@ -30,6 +28,7 @@ while (continuar) { // Loop para exibir o menu até que o usuário escolha sair
         menuservicos.mostrarTela(); // Chama a função mostrarTela do módulo menuServicos
         break;
         case 3:
+        login.mostrarTela(); 
         console.log(chalk.bold.green("Obrigado pela Preferencia! Volte Sempre! "));
         continuar = false; // Sai do loop
         break;
