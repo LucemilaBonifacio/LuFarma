@@ -8,7 +8,7 @@ function espacamentoDuplo() {
 }
 
 function divisoria() {
-    console.log("\n==================================================================\n");
+    console.log(chalk.red("\n==================================================================\n"));
 }
 
 const carrinho = {
@@ -41,7 +41,7 @@ const carrinho = {
                 case 4:
                     espacamentoDuplo();
                     console.log(chalk.bold.green("Prosseguindo para pagamento..."));
-                    espacamentoDuplo();
+                    divisoria();
                     // segue para o pagamento
                     break;
                 case 5: // Caso de sair do menu do carrinho
