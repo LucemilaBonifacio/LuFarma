@@ -36,4 +36,3 @@ while (continuar) { // Loop para exibir o menu até que o usuário escolha sair
         console.log(chalk.bold.red("Opção inválida. Tente novamente."));
     }
 }
-
