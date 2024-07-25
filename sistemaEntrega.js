@@ -37,6 +37,7 @@ const finalizarCompra = {
                 console.log(`Seu pedido foi enviado para o seguinte endereço: ${endereco}`);
                 espacamentoDuplo();
                 console.log(chalk.bold.green("Agradecemos a sua compra e esperamos vê-lo novamente em breve."));
+                divisoria();
                 espacamentoDuplo();
                 break; // Encerra o loop após exibir a mensagem de envio
             } else {
