@@ -28,6 +28,7 @@ const finalizarCompra = {
                 espacamentoDuplo();
                 console.log(chalk.bold.green("Agradecemos a sua compra e esperamos vê-lo novamente em breve."));
                 espacamentoDuplo();
+                divisoria();
                 break; // Encerra o loop após exibir a mensagem de retirada
             } else if (confirmacao === 2) {
                 let endereco = solicitarEndereco();
@@ -37,12 +38,13 @@ const finalizarCompra = {
                 console.log(`Seu pedido foi enviado para o seguinte endereço: ${endereco}`);
                 espacamentoDuplo();
                 console.log(chalk.bold.green("Agradecemos a sua compra e esperamos vê-lo novamente em breve."));
-                divisoria();
                 espacamentoDuplo();
+                divisoria();
                 break; // Encerra o loop após exibir a mensagem de envio
             } else {
                 console.log(chalk.bold.red("Opção inválida. Tente novamente."));
                 espacamentoDuplo();
+                divisoria();
             }
         } while (true); 
     }
