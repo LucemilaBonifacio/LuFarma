@@ -8,5 +8,5 @@ Conforme foi solicitado com código para impressão apenas no console.
 
 
 <div align="center">
-<img src="![Capturar6](https://github.com/user-attachments/assets/2ebaf8f3-a66c-4300-8075-a05d8997217d)" width="300px" />
+<img src="https://github.com/user-attachments/assets/2ebaf8f3-a66c-4300-8075-a05d8997217d" width="300px" />
 </div>
