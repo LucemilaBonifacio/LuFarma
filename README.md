@@ -1,4 +1,8 @@
 # LuFarma
+<div align="center">
+<img src="" width="800px" />
+</div>
+
 Projeto para criação de uma Farmácia, realizado no curso FAP da Softex.
 Conforme foi solicitado com código para impressão apenas no console.
 
