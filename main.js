@@ -21,14 +21,15 @@ while (continuar) { // Loop para exibir o menu até que o usuário escolha sair
     switch (opcaoMenu) {
         case 1:
         carrinho.mostrarTela(); // Chama a função mostrarTela do módulo carrinho
+        login.mostrarTela(); 
         sistemacompras.mostrarTela();
         sistemaentrega.mostrarTela();
         break;
         case 2:
+        login.mostrarTela(); 
         menuservicos.mostrarTela(); // Chama a função mostrarTela do módulo menuServicos
         break;
         case 3:
-        login.mostrarTela(); 
         console.log(chalk.bold.green("Obrigado pela Preferencia! Volte Sempre! "));
         continuar = false; // Sai do loop
         break;
