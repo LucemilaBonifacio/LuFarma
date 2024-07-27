@@ -2,6 +2,7 @@ const prompt = require('prompt-sync')();
 const listaCosmeticos = require('./listaCosmeticos');
 const listaMedicamentos = require('./listaMedicamentos'); //listas de medicamentos e cosmeticos importadas
 const chalk = require("chalk");
+
 function espacamentoDuplo() {
     console.log();
     console.log();
