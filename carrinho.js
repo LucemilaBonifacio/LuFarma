@@ -25,7 +25,7 @@ const carrinho = {
             console.log(chalk.yellow("2 -> Visualizar carrinho"));
             console.log(chalk.yellow("3 -> Remover item do carrinho"));
             console.log(chalk.yellow("4 -> Seguir para pagamento"));
-            console.log(chalk.yellow("5 -> Sair")); 
+            console.log(chalk.yellow("5 -> Voltar ao menu principal")); 
             espacamentoDuplo();
             opcao = Number(prompt("Escolha uma opção: "));
 
@@ -45,10 +45,10 @@ const carrinho = {
                     divisoria();
                     // segue para o pagamento
                     break;
-                case 5: // Caso de sair do menu do carrinho
-                    console.log(chalk.bold.red("Saindo..."));
+                case 5: // Caso de voltar ao menu principal
+                    console.log(chalk.bold.red("Voltando ao menu principal..."));
                     espacamentoDuplo();
-                    process.exit(0);
+                    return true; // Indica que o usuário deseja voltar ao menu principal
                 default:
                     console.log("Opção inválida. Tente novamente.");
             }
@@ -132,19 +132,26 @@ const carrinho = {
     },
 
     removerItem: function() {
-        this.visualizarCarrinho(); // Exibe os itens no carrinho para o usuário escolher o que remover
-        espacamentoDuplo();
-        let indice = Number(prompt("Escolha o número do item para remover do carrinho: ")) - 1;
-        espacamentoDuplo();
-
-        if (indice >= 0 && indice < this.itens.length) {
-            let itemRemovido = this.itens.splice(indice, 1)[0]; // Remove o item do carrinho
-            console.log(`O item ${itemRemovido.nome} foi removido do carrinho.`);
-        } else {
-            console.log("Número inválido. Tente novamente.");
-        }
-        espacamentoDuplo();
+            if (this.itens.length === 0) { // Verifica se o carrinho está vazio
+                console.log(chalk.bold.yellow("Não há itens no carrinho para remover."));
+                return;
+            }
+    
+            this.visualizarCarrinho(); // Exibe os itens no carrinho para o usuário escolher o que remover
+            espacamentoDuplo();
+            let indice = Number(prompt("Escolha o número do item para remover do carrinho: ")) - 1;
+            espacamentoDuplo();
+    
+            if (indice >= 0 && indice < this.itens.length) {
+                let itemRemovido = this.itens.splice(indice, 1)[0]; // Remove o item do carrinho
+                console.log(`O item ${itemRemovido.nome} foi removido do carrinho.`);
+            } else {
+                console.log("Número inválido. Tente novamente.");
+            }
+            espacamentoDuplo();
+        
     }
 };
+
 
 module.exports = carrinho;
