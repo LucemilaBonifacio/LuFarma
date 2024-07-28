@@ -10,30 +10,29 @@ const chalk = require("chalk");
 
 boasvindas.mostrarTela();
 
-
 let continuar = true; // Flag para controlar o loop do menu
 
 while (continuar) { // Loop para exibir o menu até que o usuário escolha sair
-  
     menuinicial.mostrarTela();
     let opcaoMenu = Number(prompt("Escolha uma opção: ")); // Define opcaoMenu aqui
 
     switch (opcaoMenu) {
         case 1:
-        carrinho.mostrarTela(); // Chama a função mostrarTela do módulo carrinho
-        login.mostrarTela(); 
-        sistemacompras.mostrarTela();
-        sistemaentrega.mostrarTela();
-        break;
+            let voltarAoMenuPrincipal = carrinho.mostrarTela(); // Chama a função mostrarTela do módulo carrinho
+            if (voltarAoMenuPrincipal) continue; // Reinicia o loop do menu principal
+            login.mostrarTela();
+            sistemacompras.mostrarTela();
+            sistemaentrega.mostrarTela();
+            break;
         case 2:
-        login.mostrarTela(); 
-        menuservicos.mostrarTela(); // Chama a função mostrarTela do módulo menuServicos
-        break;
+            login.mostrarTela();
+            menuservicos.mostrarTela(); // Chama a função mostrarTela do módulo menuServicos
+            break;
         case 3:
-        console.log(chalk.bold.green("Obrigado pela Preferencia! Volte Sempre! "));
-        continuar = false; // Sai do loop
-        break;
+            console.log(chalk.bold.green("Obrigado pela Preferencia! Volte Sempre! "));
+            continuar = false; // Sai do loop
+            break;
         default:
-        console.log(chalk.bold.red("Opção inválida. Tente novamente."));
+            console.log(chalk.bold.red("Opção inválida. Tente novamente."));
     }
 }
