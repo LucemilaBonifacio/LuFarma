@@ -12,5 +12,5 @@ Conforme foi solicitado com código para impressão apenas no console.
 
 
 <div align="center">
-<img src="https://github.com/user-attachments/assets/2ebaf8f3-a66c-4300-8075-a05d8997217d" width="1000px" />
+<img src="https://github.com/user-attachments/assets/d8d8774b-d5a6-4bb6-bf09-4bee4fee5fb9" width="1000px" />
 </div>
