@@ -12,5 +12,14 @@ Conforme foi solicitado com código para impressão apenas no console.
 
 
 <div align="center">
-<img src="https://github.com/user-attachments/assets/d8d8774b-d5a6-4bb6-bf09-4bee4fee5fb9" width="1000px" />
+  <h1>Protótipo da Página HOME. Realizada no figma</h1>
+<img src="https://github.com/user-attachments/assets/d8d8774b-d5a6-4bb6-bf09-4bee4fee5fb9" width="800px" />
+</div>
+<div align="center">
+  <h1>Protótipo da Página LOGIN. Realizada no figma</h1>
+<img src="https://github.com/user-attachments/assets/6073a639-e887-438d-9548-931ee2d4f59a" width="800px" />
+</div>
+<div align="center">
+  <h1>Protótipo da Página SERVIÇOS PARCEIROS. Realizada no figma</h1>
+<img src="" />
 </div>
