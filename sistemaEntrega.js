@@ -26,7 +26,7 @@ const finalizarCompra = {
             confirmacao = Number(prompt("Escolha uma opção:"));
             espacamentoDuplo();
 
-            if (confirmacao === 1) {
+            if (confirmacao === 1) {1
                 console.log("Produto ficará disponível para retirada em ponto de coleta.");
                 espacamentoDuplo();
                 console.log(chalk.bold.green("Agradecemos a sua compra e esperamos vê-lo novamente em breve."));

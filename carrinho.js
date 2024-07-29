@@ -48,9 +48,17 @@ const carrinho = {
                     break;
                 case 4:  // segue para o pagamento
                     espacamentoDuplo();
-                    console.log(chalk.bold.green("Prosseguindo para pagamento..."));
-                    divisoria();
-                    sistemaCompras.mostrarTela();
+                    if (this.itens.length === 0) {
+                        console.clear();
+                        console.log(chalk.bold.red("O carrinho está vazio."));
+                        console.log();
+                    }else{
+                        console.clear();
+                        divisoria();
+                        console.log(chalk.bold.green("Prosseguindo para pagamento..."));
+                        divisoria();
+                        sistemaCompras.mostrarTela();
+                    }
                     break;
                 case 5: // Caso de sair do menu do carrinho
                     console.clear();
@@ -86,8 +94,9 @@ const carrinho = {
                         for (let i = 0; i < quantidade; i++) {
                             this.itens.push(item);
                         }
-                        espacamentoDuplo();
-                        console.log(`${quantidade} unidades de ${item.nome} foram adicionadas ao carrinho por R$ ${item.preco.toFixed(2)} cada.`);
+                        console.clear();
+                        console.log(chalk.bold.green(`${quantidade} unidades de ${item.nome} foram adicionadas ao carrinho por R$ ${item.preco.toFixed(2)} cada.`));
+                        divisoria();
                     } else {
                         espacamentoDuplo();
                         console.log("Quantidade inválida. Tente novamente.");

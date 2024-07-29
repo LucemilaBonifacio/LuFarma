@@ -4,13 +4,11 @@ const menuinicial = require("./menuInicial");
 const menuservicos = require("./menuServicos");
 const carrinho = require("./carrinho");
 const login = require("./login");
-const sistemacompras = require("./sistemaCompras");
-const sistemaentrega = require("./sistemaEntrega");
 const chalk = require("chalk");
 
 console.clear();
 boasvindas.mostrarTela();
-//login.mostrarTela();
+login.mostrarTela();
 
 function espacamentoDuplo() {
     console.log();
@@ -29,10 +27,7 @@ while (continuar) { // Loop para exibir o menu até que o usuário escolha sair
             let voltarAoMenuPrincipal = carrinho.mostrarTela(); // Chama a função mostrarTela do módulo carrinho
             if (voltarAoMenuPrincipal) continue; // Reinicia o loop do menu principal
             console.clear() // limpar a tela
-            //carrinho.mostrarTela(); // Chama a função mostrarTela do módulo carrinho
-            //sistemacompras.mostrarTela(); // chama a função de pagamentos
-            //sistemaentrega.mostrarTela();
-        break;
+            break;
         case 2:
             console.clear()
             menuservicos.mostrarTela(); // Chama a função mostrarTela do módulo menuServicos
