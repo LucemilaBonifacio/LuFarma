@@ -4,7 +4,7 @@ const listaMedicamentos = require('./listaMedicamentos'); //listas de medicament
 const chalk = require("chalk");
 const menuInicial = require("./menuInicial");
 const sistemaCompras = require('./sistemaCompras');
-
+const login = require('./login');
 
 function espacamentoDuplo() {
     console.log();
@@ -17,7 +17,7 @@ function divisoria() {
 
 const carrinho = {
     itens: [], // Armazena os itens no carrinho
-
+    
     mostrarTela: function () {
         let opcao;
         
@@ -57,6 +57,7 @@ const carrinho = {
                         divisoria();
                         console.log(chalk.bold.green("Prosseguindo para pagamento..."));
                         divisoria();
+                        login.mostrarTela();
                         sistemaCompras.mostrarTela();
                     }
                     break;
