@@ -8,7 +8,7 @@ const chalk = require("chalk");
 
 console.clear();
 boasvindas.mostrarTela();
-login.mostrarTela();
+
 
 function espacamentoDuplo() {
     console.log();
@@ -30,6 +30,7 @@ while (continuar) { // Loop para exibir o menu até que o usuário escolha sair
             break;
         case 2:
             console.clear()
+            login.mostrarTela();
             menuservicos.mostrarTela(); // Chama a função mostrarTela do módulo menuServicos
             break;
         case 3:
