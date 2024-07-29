@@ -17,14 +17,15 @@ const menuServicos = {
         do {
             console.log(chalk.yellow("Menu de serviços"));
             divisoria();
+            //espacamentoDuplo();
+            console.log(chalk.yellow("Menu Serviços:"));
             espacamentoDuplo();
-            console.log(chalk.yellow("Menu:"));
-            espacamentoDuplo();
-            console.log(chalk.yellow("1 -> Lista de Serviços da farmácia"));
-            console.log(chalk.yellow("2 -> Lista de empresas parceiras"));
-            console.log(chalk.yellow("3 -> Sair"));
+            console.log(chalk.yellow("1 -> Serviços da farmácia"));
+            console.log(chalk.yellow("2 -> Lista de parceiros"));
+            console.log(chalk.yellow("3 -> Voltar ao Menu Inicial"));
             espacamentoDuplo();
             opcao = Number(prompt("Escolha uma opção: "));
+            espacamentoDuplo();
 
             switch (opcao) {
                 case 1:
@@ -34,8 +35,9 @@ const menuServicos = {
                     this.mostrarListaParceiros(); // Correção para chamar a função correta
                     break;
                 case 3:
-                    console.log(chalk.bold.green("Volte logo!"));
-                    espacamentoDuplo();
+                    console.clear();
+                    // console.log(chalk.bold.green("Volte logo!"));
+                    // espacamentoDuplo();
                     break;
                 default:
                     console.log(chalk.bold.red("Opção inválida. Tente novamente."));
@@ -50,15 +52,27 @@ const menuServicos = {
         espacamentoDuplo();
         console.log(chalk.yellow("1 -> Testagem para COVID"));
         console.log(chalk.yellow("2 -> Aferição de pressão"));
-        console.log(chalk.yellow("3 -> Sair"));
+        console.log(chalk.yellow("3 -> Voltar ao Menu Serviços"));
         espacamentoDuplo();
         let servicoOpcao = Number(prompt("Escolha uma opção: "));
         espacamentoDuplo();
 
         if (servicoOpcao == 1 || servicoOpcao == 2) {
+            let nomeServico;
+            console.clear();
+            espacamentoDuplo();
             console.log(chalk.bold.green("Encaminhando usuário ao farmacêutico de plantão."));
+            espacamentoDuplo();
+            if (servicoOpcao == 1){ 
+                nomeServico = "Testagem";
+            }else {
+                nomeServico = "Aferição de Pressão";
+            }
+            console.log(chalk.green(`Serviço escolhido: ${nomeServico}`))
+            espacamentoDuplo();
         } else {
-            console.log(chalk.bold.green("Volte logo!"));
+            //console.log(chalk.bold.green("Volte logo!"));
+            console.clear();
         }
         espacamentoDuplo();
     },
@@ -67,17 +81,20 @@ const menuServicos = {
         divisoria();
         console.log(chalk.yellow("Lista de parceiros:"));
         espacamentoDuplo();
-        console.log(chalk.yellow("1 -> MedPrev - Medicina Online"));
-        console.log(chalk.yellow("2 -> Vaccine - Clínica de vacinas"));
-        console.log(chalk.yellow("3 -> Cerpe - Laboratório"));
-        console.log(chalk.yellow("4 -> Sair"));
+        console.log(chalk.yellow("1 -> MedPrev"));
+        console.log(chalk.yellow("2 -> Vaccine"));
+        console.log(chalk.yellow("3 -> Cerpe"));
+        console.log(chalk.yellow("4 -> Voltar ao Menu Serviços"));
         espacamentoDuplo();
         let parceiroOpcao = Number(prompt("Escolha uma opção: "));
         espacamentoDuplo();
         if (parceiroOpcao >= 1 && parceiroOpcao <= 3) {
+            console.clear();
+            espacamentoDuplo();
             console.log(chalk.bold.green("Encaminhando usuário ao Serviço escolhido."));
         } else {
-            console.log(chalk.bold.green("Volte logo!"));
+            //console.log(chalk.bold.green("Volte logo!"));
+            console.clear();
         }
         espacamentoDuplo();
     }

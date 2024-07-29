@@ -2,6 +2,9 @@ const prompt = require('prompt-sync')();
 const listaCosmeticos = require('./listaCosmeticos');
 const listaMedicamentos = require('./listaMedicamentos'); //listas de medicamentos e cosmeticos importadas
 const chalk = require("chalk");
+const menuInicial = require("./menuInicial");
+const sistemaCompras = require('./sistemaCompras');
+
 
 function espacamentoDuplo() {
     console.log();
@@ -19,52 +22,61 @@ const carrinho = {
         let opcao;
         
         do {
+            
             console.log(chalk.yellow("Menu de compras"));
             divisoria();
             console.log(chalk.yellow("1 -> Adicionar item ao carrinho"));
             console.log(chalk.yellow("2 -> Visualizar carrinho"));
             console.log(chalk.yellow("3 -> Remover item do carrinho"));
             console.log(chalk.yellow("4 -> Seguir para pagamento"));
-            console.log(chalk.yellow("5 -> Voltar ao menu principal")); 
+            console.log(chalk.yellow("5 -> Menu Inicial")); 
             espacamentoDuplo();
             opcao = Number(prompt("Escolha uma opção: "));
 
             switch (opcao) {
                 case 1:
+                    console.clear();
                     this.adicionarItem();
                     break;
                 case 2:
+                    console.clear();
                     this.visualizarCarrinho();
                     break;
                 case 3:
+                    console.clear();
                     this.removerItem();
                     break;
-                case 4:
+                case 4:  // segue para o pagamento
                     espacamentoDuplo();
                     console.log(chalk.bold.green("Prosseguindo para pagamento..."));
                     divisoria();
-                    // segue para o pagamento
+                    sistemaCompras.mostrarTela();
                     break;
-                case 5: // Caso de voltar ao menu principal
-                    console.log(chalk.bold.red("Voltando ao menu principal..."));
+                case 5: // Caso de sair do menu do carrinho
+                    console.clear();
+                    console.log(chalk.bold.green("Voltando para o Menu Inicial.")); 
                     espacamentoDuplo();
-                    return true; // Indica que o usuário deseja voltar ao menu principal
-                default:
-                    console.log("Opção inválida. Tente novamente.");
-            }
-        } while (opcao !== 4); // Continua o loop até que o usuário escolha a opção 4
+                    break;
+                    //process.exit(0);
+                    default:
+                        console.log("Opção inválida. Tente novamente.");
+                    }
+                    
+        } while (opcao !== 5); // Continua o loop até que o usuário escolha a opção 4
     },
 
     adicionarItem: function() {
-        let categoria = prompt("Escolha a categoria (medicamentos/cosmeticos): ");
         espacamentoDuplo();
-        if (categoria === 'medicamentos' || categoria === 'cosmeticos') {
+        console.log(chalk.bold.yellow("Categorias: \n\n    M -> Medicamentos  \n    C -> Cosmeticos \n \n "));
+        let categoria = prompt("Escolha a categoria: ");
+        espacamentoDuplo();
+        if (categoria.toLowerCase() === "m" || categoria.toLowerCase() === "c") {
             this.exibirItensDisponiveis(categoria);
             espacamentoDuplo();
             let escolha = Number(prompt("Escolha o número do item para adicionar ao carrinho: ")) - 1;
             espacamentoDuplo();
 
-            if (categoria === 'medicamentos') {
+            if (categoria.toLowerCase() === "m") {
                 if (escolha >= 0 && escolha < listaMedicamentos.length) {
                     let item = listaMedicamentos[escolha];
                     espacamentoDuplo();
@@ -83,7 +95,7 @@ const carrinho = {
                 } else {
                     console.log("Opção inválida. Tente novamente.");
                 }
-            } else if (categoria === 'cosmeticos') {
+            } else if (categoria.toLowerCase() === "c") {
                 if (escolha >= 0 && escolha < listaCosmeticos.length) {
                     let item = listaCosmeticos[escolha];
                     let quantidade = Number(prompt(`Quantas unidades de ${item.nome} deseja adicionar? `));
@@ -106,11 +118,11 @@ const carrinho = {
 
     exibirItensDisponiveis: function(categoria) {
         console.log("Itens disponíveis:");
-        if (categoria === 'medicamentos') {
+        if (categoria.toLowerCase() === 'm') {
             listaMedicamentos.forEach((item, index) => {
                 console.log(`${index + 1}. ${item.nome} - R$ ${item.preco.toFixed(2)}`);
             });
-        } else if (categoria === 'cosmeticos') {
+        } else if (categoria.toLowerCase() === 'c') {
             listaCosmeticos.forEach((item, index) => {
                 console.log(`${index + 1}. ${item.nome} - R$ ${item.preco.toFixed(2)}`);
             });
@@ -119,39 +131,54 @@ const carrinho = {
 
     visualizarCarrinho: function() {
         if (this.itens.length === 0) {
-            console.log("O carrinho está vazio.");
+            console.clear();
+            console.log(chalk.bold.red("O carrinho está vazio."));
+            console.log();
         } else {
+            console.clear();
+            espacamentoDuplo();
             console.log("Itens no carrinho:");
+            console.log();
             let total = 0;
             this.itens.forEach((produto, index) => {
                 console.log(`${index + 1}. ${produto.nome} - R$ ${produto.preco.toFixed(2)}`);
                 total += produto.preco;
+                
             });
+            console.log();
             console.log(`Total: R$ ${total.toFixed(2)}`);
+            espacamentoDuplo();
         }
     },
 
     removerItem: function() {
-            if (this.itens.length === 0) { // Verifica se o carrinho está vazio
-                console.log(chalk.bold.yellow("Não há itens no carrinho para remover."));
-                return;
+        if (this.itens.length === 0) {
+            console.clear();
+            espacamentoDuplo();
+            console.log(chalk.bold.red("Carrinho Vazio !!!"));
+            espacamentoDuplo();
+        }else {
+            if (this.itens.length !== 0) {
+                espacamentoDuplo();
+                this.visualizarCarrinho(); // Exibe os itens no carrinho para o usuário escolher o que remover
+                let indice = Number(prompt("Escolha o número do item para remover do carrinho: ")) - 1;
+                espacamentoDuplo();
+                
+                if (indice >= 0 && indice < this.itens.length) {
+                    let itemRemovido = this.itens.splice(indice, 1)[0]; // Remove o item do carrinho
+                    console.clear();
+                    console.log();
+                    console.log(`O item ${itemRemovido.nome} foi removido do carrinho.`);
+                    espacamentoDuplo();
+                } else {
+                    console.log("Número inválido. Tente novamente.");
+                };
             }
-    
-            this.visualizarCarrinho(); // Exibe os itens no carrinho para o usuário escolher o que remover
-            espacamentoDuplo();
-            let indice = Number(prompt("Escolha o número do item para remover do carrinho: ")) - 1;
-            espacamentoDuplo();
-    
-            if (indice >= 0 && indice < this.itens.length) {
-                let itemRemovido = this.itens.splice(indice, 1)[0]; // Remove o item do carrinho
-                console.log(`O item ${itemRemovido.nome} foi removido do carrinho.`);
-            } else {
-                console.log("Número inválido. Tente novamente.");
-            }
-            espacamentoDuplo();
+        };
         
     }
-};
 
+}
+    
 
 module.exports = carrinho;

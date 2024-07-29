@@ -1,6 +1,7 @@
 var prompt = require('prompt-sync')();
 var QRCode = require('qrcode-terminal');
 const chalk = require("chalk");
+const carrinho = require('./carrinho');
 
 
 function divisoria() {
@@ -36,7 +37,7 @@ const sistemaCompras = {
         console.log(chalk.yellow("Como deseja pagar?"));
         divisoria();
         espacamentoDuplo();
-        console.log(chalk.yellow(" 1 -> Débito \n 2 -> Crédito \n 3 -> Pix \n 4 -> Pagar na entrega \n"));
+        console.log(chalk.yellow(" 1 -> Débito \n 2 -> Crédito \n 3 -> Pix \n 4 -> Pagar na entrega \n 5 -> Voltar para o Carrinho \n"));
         divisoria();
         espacamentoDuplo();
 
@@ -66,10 +67,16 @@ const sistemaCompras = {
                 pagarNaEntrega = true;
                 console.log(chalk.bold.green("Prosseguindo para entrega."));
                 break;
-            default:
-                console.log(chalk.bold.red("Opção inválida. Tente novamente."));
-        }
-    }
-};
+            case 5:
+                console.clear();
+                espacamentoDuplo();
+                console.log(chalk.bold.red("voltando para o carrinho."));
+                espacamentoDuplo();
+                break;
+                default:
+                    console.log(chalk.bold.red("Opção inválida. Tente novamente."));
+                }
+            }
+        };
 
 module.exports = sistemaCompras;
