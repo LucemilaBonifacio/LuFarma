@@ -75,19 +75,22 @@ const sistemaCompras = {
                 let conteudoQR = "Pagamento aprovado";
                 QRCode.generate(conteudoQR, { small: true });
 
-                console.log(chalk.bold.green("Aguardando pagamentos!"));
-                setTimeout(() => {
-                    console.log(chalk.bold.green("Pagamento realizado com sucesso!!!"));
-                    console.log("Prosseguindo para entrega.");
-                }, 10000); // 10000 milissegundos = 10 segundos
+                //console.clear();
+                divisoria();
+                console.log(chalk.bold.green("Pagamento aprovado \n\nProsseguindo para entrega."));
+                divisoria();
+                finalizarCompra.mostrarTela();
 
-                espacamentoDuplo();
-                console.log(chalk.bold.green("\nProsseguindo para entrega."));
-                espacamentoDuplo();
+                // espacamentoDuplo();
+                // console.log(chalk.bold.green("\nProsseguindo para entrega."));
+                // espacamentoDuplo();
                 break;
             case 4:
                 pagarNaEntrega = true;
+                divisoria();
                 console.log(chalk.bold.green("Prosseguindo para entrega."));
+                divisoria();
+                finalizarCompra.mostrarTela();
                 break;
             case 5:
                 console.clear();

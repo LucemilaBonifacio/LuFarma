@@ -25,7 +25,8 @@ const login = {
         if (usuario.login.toLowerCase() == loginInput.toLowerCase() && usuario.senha == senhaInput) {
           this.contaLogada = usuario;
           this.loginOk = true;
- 
+          console.clear();
+          divisoria();
           console.log(chalk.bold.green("Login realizado com sucesso"));
           divisoria();
           break;
@@ -33,6 +34,8 @@ const login = {
       }
 
       if (this.loginOk == false) {
+        console.clear();
+        divisoria();
         console.log(chalk.bold.red("Login ou senha incorretos. Tente novamente."));
         divisoria();
       }
