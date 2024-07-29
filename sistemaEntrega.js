@@ -27,11 +27,20 @@ const finalizarCompra = {
             espacamentoDuplo();
 
             if (confirmacao === 1) {1
-                console.log("Produto ficará disponível para retirada em ponto de coleta.");
+                console.log("Onde deseja retirar?");
+                console.log("1 -> Recife antigo ");
+                console.log("2 -> Boa viagem");
+                console.log("3 -> Várzea");
+                console.log("4 -> Madalena");
+                espacamentoDuplo();
+                let opcaoRetirada = Number(prompt(" "));
+                if(opcaoRetirada == 1 || opcaoRetirada == 2 || opcaoRetirada == 3 || opcaoRetirada == 4){
+                espacamentoDuplo();
+                console.log(chalk.bold.green("Produto ficará disponível no ponto de coleta selecionado."))
                 espacamentoDuplo();
                 console.log(chalk.bold.green("Agradecemos a sua compra e esperamos vê-lo novamente em breve."));
                 espacamentoDuplo();
-                divisoria();
+                divisoria();}else{};
                 break; // Encerra o loop após exibir a mensagem de retirada
             } else if (confirmacao === 2) {
                 let endereco = solicitarEndereco();
