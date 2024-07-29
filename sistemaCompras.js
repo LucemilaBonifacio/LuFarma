@@ -72,7 +72,7 @@ const sistemaCompras = {
             case 3:
                 pix = true;
                 console.log(chalk.bold.green("Gerando QR code"));
-                let conteudoQR = "Pagamento aprovado";
+                let conteudoQR = "https://feepay.com.br/wp-content/uploads/2021/11/PAGAMENTO-APROVADO-PELO-LINK-DE-PAGAMENTO-FEEPAY-984x1024.jpg";
                 QRCode.generate(conteudoQR, { small: true });
 
                 //console.clear();
