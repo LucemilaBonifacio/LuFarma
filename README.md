@@ -13,13 +13,13 @@ Conforme foi solicitado com código para impressão apenas no console.
 
 <div align="center">
   <h1>Protótipo da Página HOME. Realizada no figma</h1>
-<img src="https://github.com/user-attachments/assets/d8d8774b-d5a6-4bb6-bf09-4bee4fee5fb9" width="800px" />
+<img src="https://github.com/user-attachments/assets/d8d8774b-d5a6-4bb6-bf09-4bee4fee5fb9" width="500px" />
 </div>
 <div align="center">
   <h1>Protótipo da Página LOGIN. Realizada no figma</h1>
-<img src="https://github.com/user-attachments/assets/6073a639-e887-438d-9548-931ee2d4f59a" width="800px" />
+<img src="https://github.com/user-attachments/assets/6073a639-e887-438d-9548-931ee2d4f59a" width="500px" />
 </div>
 <div align="center">
   <h1>Protótipo da Página SERVIÇOS PARCEIROS. Realizada no figma</h1>
-<img src="" />
+<img src="https://github.com/user-attachments/assets/42e254c5-c705-45da-b122-1ec23386b08b" width="500px" />
 </div>
